@@ -65,7 +65,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
+const navIndex = ref('')
+navIndex.value =  sessionStorage.getItem('navIndex') ? sessionStorage.getItem('navIndex') : 0
+const menuName = ref('首页')
+const menuClass = ref('glyphicon glyphicon-menu-down')
 const navList = reactive([
   {
     name: "首页",
@@ -112,6 +116,18 @@ const navList = reactive([
     children: []
   }
 ])
+function navClick(index, name) {
+  navIndex.value = index
+  sessionStorage.setItem('navIndex', index)
+  menuName.value = name
+}
+function menuClick() {
+  if (menuClass.value == "glyphicon glyphicon-menu-down") {
+    menuClass.value = "glyphicon glyphicon-menu-up";
+  } else {
+    menuClass.value = "glyphicon glyphicon-menu-down";
+  }
+}
 </script>
 
 <style scoped>
