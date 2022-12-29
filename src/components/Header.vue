@@ -5,7 +5,7 @@
     <div class="header-top container-fuild hidden-xs">
       <div class="container">
         <div class="server pull-left">
-          <span class="glyphicon glyphicon-earphone"></span>888-888-888
+          <span class="glyphicon glyphicon-earphone"></span>123-456-789
           <span class="glyphicon glyphicon-envelope"></span>liyunkun_11@163.com
           <span class="glyphicon glyphicon-time"></span>7x24小时为您服务
         </div>
@@ -70,7 +70,7 @@ const navIndex = ref('')
 navIndex.value =  sessionStorage.getItem('navIndex') ? sessionStorage.getItem('navIndex') : 0
 const menuName = ref('首页')
 const menuClass = ref('glyphicon glyphicon-menu-down')
-const navList = reactive([
+const navList = [
   {
     name: "首页",
     path: "/",
@@ -115,7 +115,7 @@ const navList = reactive([
     path: "/contactus",
     children: []
   }
-])
+]
 function navClick(index, name) {
   navIndex.value = index
   sessionStorage.setItem('navIndex', index)

@@ -7,6 +7,9 @@
       :slides-per-view="1"
       :space-between="0"
       navigation
+      lazy
+      loop
+      autoplay
       :pagination="{
         clickable: true
       }"
@@ -16,8 +19,8 @@
         v-for="(item, index) in swiperList"
         :key="index"
       >
-        <img class="swiper-lazy" :src="item.img" alt="轮播图" />
-        <!-- <div class="swiper-lazy-preloader"></div> -->
+        <img class="swiper-lazy" :data-src="item.img" alt="轮播图" />
+        <div class="swiper-lazy-preloader"></div>
         <div class="swiper-slide-title">
           <h1>{{ item.title }}</h1>
           <p>{{ item.content }}</p>
@@ -76,13 +79,14 @@
     <div id="customer" class="container-fuild">
       <div class="container customer-container">
         <p class="customer-title text-center">客户评价</p>
-
         <swiper
           class="swiper-container customer-swiper hidden-xs"
           :modules="modules"
           :slides-per-view="1"
           :space-between="0"
           navigation
+          loop
+          autoplay
           :pagination="{
             clickable: true
           }"
@@ -165,12 +169,14 @@
 <script setup name="HomePage">
 import { onMounted } from 'vue'
 // import Swiper from 'swiper'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Navigation, Pagination, Scrollbar, A11y, Lazy, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import 'swiper/css/lazy'
+import 'swiper/css/autoplay'
 import { WOW } from 'wowjs'
 
 import banner1 from '@/assets/img/banner1.png'
@@ -212,7 +218,7 @@ const swiperList = [
   }
 ]
 
-const modules = [Navigation, Pagination, Scrollbar, A11y]
+const modules = [Navigation, Pagination, Scrollbar, A11y, Lazy, Autoplay]
 
 const customerList = [
   {
@@ -326,14 +332,14 @@ const serverList = [
 
 onMounted(() => {
   /* wowjs动画 */
-  var wow = new WOW({
-    boxClass: 'wow',
-    animateClass: 'animated',
-    offset: 0,
-    mobile: true,
-    live: true
-  })
-  wow.init()
+  // var wow = new WOW({
+  //   boxClass: 'wow',
+  //   animateClass: 'animated',
+  //   offset: 0,
+  //   mobile: true,
+  //   live: true
+  // })
+  // wow.init()
 })
 </script>
 
@@ -343,8 +349,9 @@ onMounted(() => {
   width: 100%;
 }
 
-/* 轮播图 */
+/* 顶部轮播图 */
 #swiper {
+  width: 100%;
   height: 600px;
 }
 
@@ -354,7 +361,7 @@ onMounted(() => {
   position: relative;
 }
 
-#swiper .banner-swiper .swiper-slide img {
+#swiper .banner-swiper img {
   width: 100%;
   height: 100%;
 }
@@ -462,7 +469,7 @@ onMounted(() => {
 
 #customer .customer-block {
   background: #fff;
-  padding: 30px;
+  padding: 30px 80px;
 }
 
 #customer .customer-logo img {
