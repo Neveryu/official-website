@@ -1,31 +1,39 @@
 <template>
   <div id="HomePage">
     <!-- 轮播图 -->
-    <div id="swiper" class="container-fuild">
-      <div class="swiper-container banner-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item,index) in swiperList" :key="index">
-            <img class="swiper-lazy" :data-src="item.img" alt="轮播图">
-            <div class="swiper-lazy-preloader"></div>
-            <div class="swiper-slide-title">
-              <h1>{{item.title}}</h1>
-              <p>{{item.content}}</p>
-            </div>
-          </div>
+    <swiper
+      id="swiper"
+      :modules="modules"
+      :slides-per-view="1"
+      :space-between="0"
+      navigation
+      :pagination="{
+        clickable: true
+      }"
+    >
+      <swiper-slide
+        class="banner-swiper"
+        v-for="(item, index) in swiperList"
+        :key="index"
+      >
+        <img class="swiper-lazy" :src="item.img" alt="轮播图" />
+        <!-- <div class="swiper-lazy-preloader"></div> -->
+        <div class="swiper-slide-title">
+          <h1>{{ item.title }}</h1>
+          <p>{{ item.content }}</p>
         </div>
-        <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
+      </swiper-slide>
+    </swiper>
 
-        <!-- 如果需要导航按钮 -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
     <!-- 大数据管理系统 -->
     <div id="bigData" class="container-fuild">
       <div class="row bigData-container">
         <div class="col-xs-12 col-sm-12 col-md-6 wow zoomIn">
-          <img class="img-responsive" src="@/assets/img/img1.png" alt="大数据管理系统">
+          <img
+            class="img-responsive"
+            src="@/assets/img/img1.png"
+            alt="大数据管理系统"
+          />
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6">
           <h2 class="bigData-title">
@@ -35,20 +43,27 @@
           <p>
             当今最领先的响应式自助建站平台。无论您是普通互联网用户，还是专业网站制作人员，都能使用起飞页设计出最具专业水准的网站。想创建一个简单的单页式站点，还是一个专业的公司网站，亦或是一个别具一格的博客？起飞页可以满足您的所有需求。
           </p>
-          <p>我们的流线式网页布局设计方案和可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。无论您是普通互联网用户，还是专业网站制作人员。</p>
+          <p>
+            我们的流线式网页布局设计方案和可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。无论您是普通互联网用户，还是专业网站制作人员。
+          </p>
           <h2 class="bigData-device">PC/PAD/Phone &nbsp; 全设备支持</h2>
           <a href="#" class="btn btn-lg btn-block btn-info">联系我们</a>
         </div>
       </div>
     </div>
+
     <!-- 您身边的IT专家 -->
     <div id="contactUs" class="container-fuild text-center">
       <div class="container contactUs-container wow slideInUp">
         <h1>您身边的IT专家</h1>
         <h3>7x24小时提供出色的IT服务</h3>
-        <button class="btn btn-default btn-sm"
+        <button
+          class="btn btn-default btn-sm"
           onmouseleave="this.style.borderColor='#ffffff'; this.style.backgroundColor='#ffffff'; this.style.color='#3f3f3f';"
-          onmouseenter="this.style.backgroundColor='transparent'; this.style.borderColor='#ffffff'; this.style.color='#ffffff';">联系我们</button>
+          onmouseenter="this.style.backgroundColor='transparent'; this.style.borderColor='#ffffff'; this.style.color='#ffffff';"
+        >
+          联系我们
+        </button>
         <div class="contactUs-contactWay">
           <span></span>
           <span></span>
@@ -56,47 +71,63 @@
         </div>
       </div>
     </div>
+
     <!-- 客户评价 -->
     <div id="customer" class="container-fuild">
       <div class="container customer-container">
         <p class="customer-title text-center">客户评价</p>
-        <div class="swiper-container customer-swiper hidden-xs">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide customer-block" v-for="(item,index) in customerList" :key="index">
-              <div class="customer-logo">
-                <img class="center-block" :src="item.logo" alt="logo">
-              </div>
-              <div class="customer-yh">
-                <img src="@/assets/img/yinhao.png" alt="引号">
-              </div>
-              <div class="customer-content1">
-                <small>{{item.content}}</small>
-              </div>
-              <div class="customer-content2">{{item.title}}</div>
-            </div>
-          </div>
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-        <div class="row visible-xs customer-block">
-          <div class="col-xs-12" v-for="(item,index) in customerList" :key="index">
+
+        <swiper
+          class="swiper-container customer-swiper hidden-xs"
+          :modules="modules"
+          :slides-per-view="1"
+          :space-between="0"
+          navigation
+          :pagination="{
+            clickable: true
+          }"
+        >
+          <swiper-slide
+            class="swiper-slide customer-block"
+            v-for="(item, index) in customerList"
+            :key="index"
+          >
             <div class="customer-logo">
-              <img class="center-block" :src="item.logo" alt="logo">
+              <img class="center-block" :src="item.logo" alt="logo" />
             </div>
             <div class="customer-yh">
-              <img src="@/assets/img/yinhao.png" alt="引号">
+              <img src="@/assets/img/yinhao.png" alt="引号" />
             </div>
             <div class="customer-content1">
-              <small>{{item.content}}</small>
+              <small>{{ item.content }}</small>
+            </div>
+            <div class="customer-content2">{{ item.title }}</div>
+          </swiper-slide>
+        </swiper>
+
+        <div class="row visible-xs customer-block">
+          <div
+            class="col-xs-12"
+            v-for="(item, index) in customerList"
+            :key="index"
+          >
+            <div class="customer-logo">
+              <img class="center-block" :src="item.logo" alt="logo" />
+            </div>
+            <div class="customer-yh">
+              <img src="@/assets/img/yinhao.png" alt="引号" />
+            </div>
+            <div class="customer-content1">
+              <small>{{ item.content }}</small>
             </div>
             <div class="customer-content2">
-              <small>{{item.title}}</small>
+              <small>{{ item.title }}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- 为什么选择我们 -->
     <div id="whyChooseUs" class="conatiner-fuild">
       <div class="container">
@@ -105,13 +136,24 @@
           <p>THE REASON TO CHOOSING US</p>
         </div>
         <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-3 server-wrapper" v-for="(item,index) in serverList" :key="index">
-            <div class="server-block wow slideInUp" onmouseenter="this.style.color='#28f';this.style.borderColor='#28f'"
-              onmouseleave="this.style.color='#666';this.style.borderColor='#ccc'">
-              <img class="center-block" :src="item.logo" alt="logo">
-              <p class="text-center">{{item.title}}</p>
-              <div class="text-center" v-html="item.content" onmouseenter="this.style.color='#28f'"
-                onmouseleave="this.style.color='#ccc'"></div>
+          <div
+            class="col-xs-12 col-sm-6 col-md-3 server-wrapper"
+            v-for="(item, index) in serverList"
+            :key="index"
+          >
+            <div
+              class="server-block wow slideInUp"
+              onmouseenter="this.style.color='#28f';this.style.borderColor='#28f'"
+              onmouseleave="this.style.color='#666';this.style.borderColor='#ccc'"
+            >
+              <img class="center-block" :src="item.logo" alt="logo" />
+              <p class="text-center">{{ item.title }}</p>
+              <div
+                class="text-center"
+                v-html="item.content"
+                onmouseenter="this.style.color='#28f'"
+                onmouseleave="this.style.color='#ccc'"
+              ></div>
             </div>
           </div>
         </div>
@@ -119,207 +161,182 @@
     </div>
   </div>
 </template>
-<script>
-import Swiper from "swiper";
-import { WOW } from 'wowjs';
-export default {
-  name: "HomePage",
-  data() {
-    return {
-      swiperList: [
-        {
-          img: require("@/assets/img/banner1.png"),
-          path: "",
-          title: '您身边的IT专家1',
-          content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介',
-        },
-        {
-          img: require("@/assets/img/banner2.jpg"),
-          path: "",
-          title: '您身边的IT专家2',
-          content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介',
-        },
-        {
-          img: require("@/assets/img/banner1.png"),
-          path: "",
-          title: '您身边的IT专家3',
-          content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介',
-        },
-        {
-          img: require("@/assets/img/banner2.jpg"),
-          path: "",
-          title: '您身边的IT专家4',
-          content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介',
-        }
-      ],
-      customerList: [
-        {
-          logo: require("@/assets/img/logo_hp.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_kk.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_toyota.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_kk.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_hp.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_toyota.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_kk.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_hp.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_toyota.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_hp.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_kk.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        },
-        {
-          logo: require("@/assets/img/logo_hp.png"),
-          title:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。",
-          content:
-            "您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。"
-        }
-      ],
-      serverList: [
-        {
-          logo: require("@/assets/img/tel.png"),
-          title: "核心优势1",
-          content: "<p>由专业客服提供人工服务</p>负责疑难问题和故障受理"
-        },
-        {
-          logo: require("@/assets/img/computer.png"),
-          title: "核心优势2",
-          content: "<p>利用远程视频工具，提供协助</p>帮助客户进行调试、解决故障"
-        },
-        {
-          logo: require("@/assets/img/qq.png"),
-          title: "核心优势3",
-          content: "<p>利用企业QQ提供在线解答</p>帮助企业快速准确解决问题和故障"
-        },
-        {
-          logo: require("@/assets/img/skill.png"),
-          title: "核心优势4",
-          content: "<p>由技术支持工程师，负责问题解答</p>需求受理及故障受理"
-        }
-      ]
-    };
+
+<script setup name="HomePage">
+import { onMounted } from 'vue'
+// import Swiper from 'swiper'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
+import { WOW } from 'wowjs'
+
+import banner1 from '@/assets/img/banner1.png'
+import banner2 from '@/assets/img/banner2.jpg'
+
+import logo_hp from '@/assets/img/logo_hp.png'
+import logo_kk from '@/assets/img/logo_kk.png'
+import logo_toyota from '@/assets/img/logo_toyota.png'
+
+import img_tel from '@/assets/img/tel.png'
+import img_computer from '@/assets/img/computer.png'
+import img_qq from '@/assets/img/qq.png'
+import img_skill from '@/assets/img/skill.png'
+
+const swiperList = [
+  {
+    img: banner1,
+    path: '',
+    title: '您身边的IT专家1',
+    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
   },
-  mounted() {
-    /* banner-swiper */
-    new Swiper(".banner-swiper", {
-      loop: true, // 循环模式选项
-      effect: 'fade',
-      //自动播放
-      autoplay: {
-        delay: 3000,
-        stopOnLastSlide: false,
-        disableOnInteraction: false
-      },
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      // 延迟加载
-      lazy: {
-        loadPrevNext: true
-      },
-      observer: true, //修改swiper自己或子元素时，自动初始化swiper
-      observeParents: true //修改swiper的父元素时，自动初始化swiper
-    });
-    /* customer-swiper */
-    new Swiper(".customer-swiper", {
-      loop: true, // 循环模式选项
-      slidesPerView: 3,
-      //自动播放
-      autoplay: {
-        delay: 3000,
-        stopOnLastSlide: false,
-        disableOnInteraction: false
-      },
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      observer: true, //修改swiper自己或子元素时，自动初始化swiper
-      observeParents: true //修改swiper的父元素时，自动初始化swiper
-    });
-    /* wowjs动画 */
-    var wow = new WOW({
-      boxClass: 'wow',
-      animateClass: 'animated',
-      offset: 0,
-      mobile: true,
-      live: true
-    })
-    wow.init();
+  {
+    img: banner2,
+    path: '',
+    title: '您身边的IT专家2',
+    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+  },
+  {
+    img: banner1,
+    path: '',
+    title: '您身边的IT专家3',
+    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+  },
+  {
+    img: banner2,
+    path: '',
+    title: '您身边的IT专家4',
+    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
   }
-};
+]
+
+const modules = [Navigation, Pagination, Scrollbar, A11y]
+
+const customerList = [
+  {
+    logo: logo_hp,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_kk,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_toyota,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_kk,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_hp,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_toyota,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_kk,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_hp,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_toyota,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_hp,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_kk,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  },
+  {
+    logo: logo_hp,
+    title:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。',
+    content:
+      '您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。您可以双击这里或者点击编辑按钮来修改内容。您还可以添加图标，按钮，图片等常用元素。'
+  }
+]
+
+const serverList = [
+  {
+    logo: img_tel,
+    title: '核心优势1',
+    content: '<p>由专业客服提供人工服务</p>负责疑难问题和故障受理'
+  },
+  {
+    logo: img_computer,
+    title: '核心优势2',
+    content: '<p>利用远程视频工具，提供协助</p>帮助客户进行调试、解决故障'
+  },
+  {
+    logo: img_qq,
+    title: '核心优势3',
+    content: '<p>利用企业QQ提供在线解答</p>帮助企业快速准确解决问题和故障'
+  },
+  {
+    logo: img_skill,
+    title: '核心优势4',
+    content: '<p>由技术支持工程师，负责问题解答</p>需求受理及故障受理'
+  }
+]
+
+onMounted(() => {
+  /* wowjs动画 */
+  var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  })
+  wow.init()
+})
 </script>
+
 <style scoped>
 /* 整体盒子 */
 #HomePage {
@@ -334,15 +351,12 @@ export default {
 #swiper .banner-swiper {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 #swiper .banner-swiper .swiper-slide img {
   width: 100%;
   height: 100%;
-}
-
-#swiper .banner-swiper .swiper-slide {
-  position: relative;
 }
 
 #swiper .banner-swiper .swiper-slide-title {
@@ -358,12 +372,12 @@ export default {
   line-height: 80px;
 }
 
-#swiper .banner-swiper .swiper-slide-title>h1 {
+#swiper .banner-swiper .swiper-slide-title > h1 {
   font-size: 50px;
   margin-top: 12%;
 }
 
-#swiper .banner-swiper .swiper-slide-title>p {
+#swiper .banner-swiper .swiper-slide-title > p {
   font-size: 20px;
   margin-top: 1%;
   font-weight: 700;
@@ -395,7 +409,7 @@ export default {
 #contactUs {
   color: #fff;
   height: 400px;
-  background: url("../assets/img/contact_us_bg.jpg") 0 0 no-repeat;
+  background: url('../assets/img/contact_us_bg.jpg') 0 0 no-repeat;
   background-size: 100% 100%;
   transition: all ease 0.6s;
 }
@@ -418,17 +432,17 @@ export default {
 }
 
 #contactUs .contactUs-container .contactUs-contactWay span:nth-of-type(1) {
-  background: url("../assets/img/weixin.png") 0 0 no-repeat;
+  background: url('../assets/img/weixin.png') 0 0 no-repeat;
   background-size: 100% 100%;
 }
 
 #contactUs .contactUs-container .contactUs-contactWay span:nth-of-type(2) {
-  background: url("../assets/img/weibo.png") 0 0 no-repeat;
+  background: url('../assets/img/weibo.png') 0 0 no-repeat;
   background-size: 100% 100%;
 }
 
 #contactUs .contactUs-container .contactUs-contactWay span:nth-of-type(3) {
-  background: url("../assets/img/twitter.png") 0 0 no-repeat;
+  background: url('../assets/img/twitter.png') 0 0 no-repeat;
   background-size: 100% 100%;
 }
 
@@ -500,12 +514,12 @@ export default {
   height: 48px;
 }
 
-#whyChooseUs .server-block>p {
+#whyChooseUs .server-block > p {
   font-size: 20px;
   margin: 30px 0;
 }
 
-#whyChooseUs .server-block>div {
+#whyChooseUs .server-block > div {
   color: #ccc;
 }
 
@@ -578,7 +592,7 @@ export default {
     padding: 30px;
   }
 
-  #customer .customer-block>div {
+  #customer .customer-block > div {
     padding: 30px 0;
   }
 
@@ -607,12 +621,12 @@ export default {
     height: 48px;
   }
 
-  #whyChooseUs .server-block>p {
+  #whyChooseUs .server-block > p {
     font-size: 20px;
     margin: 30px 0;
   }
 
-  #whyChooseUs .server-block>div {
+  #whyChooseUs .server-block > div {
     color: #ccc;
   }
 }

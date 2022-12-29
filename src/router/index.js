@@ -14,13 +14,9 @@ import {createRouter as _createRouter, createWebHashHistory} from 'vue-router'
 
 const routes = [
   {
-    path: '*',
-    redirect: '/'
-  },
-  {
     path: '/',
     name: 'PageView',
-    component: resolve => require(['@/view/PageView'], resolve),
+    component: () => import('@/view/PageView.vue'),
     children: [
       {
         path: '/',
@@ -29,7 +25,7 @@ const routes = [
       {
         path: '/home',
         name: 'home',
-        component: resolve => require(['@/view/HomePage'], resolve),
+        component: () => import('@/view/HomePage.vue'),
         meta: {
           title: '首页'
         }

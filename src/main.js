@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import { createRouter } from '@/router'
 
 /* swiper */
-// import 'swiper/dist/css/swiper.min.css'
+// import 'swiper/swiper.min.css'
+
 /* 重置样式 */
 import './assets/css/reset.min.css'
 
