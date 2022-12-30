@@ -13,9 +13,12 @@ import './assets/css/bootstrap.min.css'
 import './assets/js/bootstrap.min.js'
 
 /* animate.css */
-import 'animate.css'
+import 'wow.js/css/libs/animate.css'
 
 import App from './App.vue'
 
 const router = createRouter()
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(router).mount('#app')
+

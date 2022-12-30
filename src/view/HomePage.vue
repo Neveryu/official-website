@@ -167,7 +167,8 @@
 </template>
 
 <script setup name="HomePage">
-import { onMounted } from 'vue'
+import WOW from 'wow.js'
+import { getCurrentInstance, onMounted } from 'vue'
 // import Swiper from 'swiper'
 import { Navigation, Pagination, Scrollbar, A11y, Lazy, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -177,7 +178,6 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/lazy'
 import 'swiper/css/autoplay'
-import { WOW } from 'wowjs'
 
 import banner1 from '@/assets/img/banner1.png'
 import banner2 from '@/assets/img/banner2.jpg'
@@ -330,16 +330,18 @@ const serverList = [
   }
 ]
 
+// const { proxy } = getCurrentInstance() //获取上下文实例，ctx=vue2的this
 onMounted(() => {
+  // console.log('mounted', proxy)
+  // console.log(proxy.$wow, '------')
   /* wowjs动画 */
-  // var wow = new WOW({
-  //   boxClass: 'wow',
-  //   animateClass: 'animated',
-  //   offset: 0,
-  //   mobile: true,
-  //   live: true
-  // })
-  // wow.init()
+  new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  }).init()
 })
 </script>
 
