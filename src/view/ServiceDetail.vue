@@ -33,7 +33,7 @@
   </div>
 </template>
 <script setup name="serviceDetail">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
 import { useRoute } from 'vue-router'
 import WOW from 'wow.js'
 const id = ref('section-1')
@@ -86,10 +86,18 @@ const serviceContentList = [
   }
 ]
 const route = useRoute()
+const props = defineProps({
+  id: {
+    type: String,
+    default() {
+      return 'section-1'
+    }
+  }
+})
 onMounted(() => {
-  console.log(route.params, route.query, 'oooooo')
-  id.value = route.params.id
-  console.log(id.value, 'pp')
+  console.log(route, route.params, route.query, 'oooooo')
+  id.value = props.id
+  console.log(id.value, props.id, 'pp')
   let top = document.getElementById(id.value).offsetTop
   console.log(top, '[[[[[[[[[[[[[]]]]]]]]]]]]]')
   $(window).scrollTop(top + 300)

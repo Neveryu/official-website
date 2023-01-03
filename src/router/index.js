@@ -66,8 +66,41 @@ const routes = [
         path: '/serviceDetail',
         name: 'serviceDetail',
         component: () => import('@/view/ServiceDetail.vue'),
+        props: true,
         meta: {
           title: '相关服务-详情'
+        }
+      },
+      {
+        path: '/newsinformation',
+        name: 'newsInformation',
+        component: () => import('@/view/NewsInformation.vue'),
+        meta: {
+          title: '新闻动态'
+        }
+      },
+      {
+        path: '/companyintroduction',
+        name: 'companyIntroduction',
+        component: () => import('@/view/CompanyIntroduction.vue'),
+        meta: {
+          title: '公司介绍'
+        }
+      },
+      {
+        path: '/jobchance',
+        name: 'jobchance',
+        component: () => import('@/view/JobChance.vue'),
+        meta: {
+          title: '工作机会'
+        }
+      },
+      {
+        path: '/contactus',
+        name: 'contactus',
+        component: () => import('@/view/ContactUs.vue'),
+        meta: {
+          title: '联系我们'
         }
       }
     ]

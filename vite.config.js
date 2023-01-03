@@ -8,9 +8,10 @@ export default defineConfig({
   plugins: [
     vue(),
     inject({
-      $: "jquery",  // 这里会自动载入 node_modules 中的 jquery
-      jQuery: "jquery",
-      "windows.jQuery": "jquery"
+      $: 'jquery', // 这里会自动载入 node_modules 中的 jquery
+      jQuery: 'jquery',
+      'windows.jQuery': 'jquery',
+      BMap: 'BMap'
     })
   ],
   resolve: {
@@ -19,3 +20,4 @@ export default defineConfig({
     }
   }
 })
+

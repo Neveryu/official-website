@@ -69,7 +69,7 @@ function ServiceClick(id) {
   router.push({
     name: 'serviceDetail',
     params: {
-      id: id
+      id
     }
   })
 }
