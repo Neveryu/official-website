@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t}from"./index.93005c13.js";const c={},r={id:"smartTown"};function n(s,_){return t(),o("div",r,"\u667A\u80FD\u5C0F\u9547\u7BA1\u7406\u7CFB\u7EDF")}const f=e(c,[["render",n]]);export{f as default};
