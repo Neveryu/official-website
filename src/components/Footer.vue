@@ -5,19 +5,27 @@
     </div>
     <p class="title">公司企业网站模板</p>
     <p class="address_tel_fax">
-      <span>地址：公司地址公司地址公司地址公司地址</span>
-      <span>Tel：888-888-888</span>
-      <span>Fax：8888-88888888</span>
+      <p>地址：{{ address }}</p>
+      <p>QQ群：<a style="color:#fff" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ce9f5f0d1d7553fb5634521f79a89668ad0d798eb35047f93300df63ebae4c05">{{ qqgroup }}</a></p>
     </p>
     <p class="email_wx">
-      <span>邮箱：never_yu@qq.com</span>
-      <span>公司微信号：miracle_421354532</span>
+      <p>博客：<a :href='blog + "neveryu/"' style="color:#fff">{{ blog }}</a></p>
+      <p>邮箱：{{ email }}</p>
+      <p>公司QQ号：{{ qq }}</p>
     </p>
-    <p class="copy">Copyright &copy; 2018 - Now 公司名称公司名称</p>
+    <p class="copy">Copyright &copy; 2018 - Now {{ company }}</p>
   </div>
 </template>
 
-<script setup name="Footer"></script>
+<script setup name="Footer">
+const address = import.meta.env.VITE_APP_ADDRESS
+const phone = import.meta.env.VITE_APP_PHONE
+const email = import.meta.env.VITE_APP_EMAIL
+const qq = import.meta.env.VITE_APP_QQ
+const company = import.meta.env.VITE_APP_COMPANYNAME
+const blog = import.meta.env.VITE_APP_BLOG
+const qqgroup = import.meta.env.VITE_APP_QQGROUP
+</script>
 
 <style scoped>
 #footer {
@@ -76,3 +84,4 @@
   }
 }
 </style>
+

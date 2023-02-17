@@ -11,7 +11,9 @@
               v-for="(item, index) in serviceNavList"
               :key="index"
             >
-              <a :href="'#' + item.id">{{ item.title }}</a>
+              <a href="javascript:;" @click.stop="toSection(item.id)">{{
+                item.title
+              }}</a>
             </li>
           </ul>
         </div>
@@ -32,8 +34,9 @@
     </div>
   </div>
 </template>
+
 <script setup name="serviceDetail">
-import { ref, onMounted, defineProps } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import WOW from 'wow.js'
 const id = ref('section-1')
@@ -85,21 +88,30 @@ const serviceContentList = [
       '<h3>这是标题1</h3><p>这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。</p><h3>这是标题2</h3><p>这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。这里是内容，请根据实际需要修改。</p>'
   }
 ]
+function toSection(_id) {
+  id.value = _id
+  let top = document.getElementById(id.value).offsetTop
+  $(window).scrollTop(top + 300)
+  $('#myNav').affix({
+    offset: {
+      top: 300
+    }
+  })
+}
 const route = useRoute()
 const props = defineProps({
   id: {
     type: String,
-    default() {
-      return 'section-1'
-    }
+    required: true
+    // default: 'section-1222'
   }
 })
 onMounted(() => {
-  console.log(route, route.params, route.query, 'oooooo')
-  id.value = props.id
-  console.log(id.value, props.id, 'pp')
+  console.log('route：', route, route.params, route.query)
+  console.log('history.state：', history.state)
+  id.value = history.state.id
+  console.log(id.value, 'pp')
   let top = document.getElementById(id.value).offsetTop
-  console.log(top, '[[[[[[[[[[[[[]]]]]]]]]]]]]')
   $(window).scrollTop(top + 300)
   $('#myNav').affix({
     offset: {
@@ -177,4 +189,3 @@ ul.nav-tabs.affix {
   border-bottom: 1px solid #ccc;
 }
 </style>
-

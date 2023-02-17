@@ -1,6 +1,6 @@
-# official-website
+# Official-website
 
-> 响应式的企业官方网站模板，使用 Vite 脚手架搭建，使用 Vue3 开发。
+> 响应式的企业官方网站模板，使用 [Vite](https://cn.vitejs.dev/) 脚手架搭建，使用 [Vue3](https://cn.vuejs.org/) 开发。
 
 ## 运行/启动
 
@@ -9,6 +9,24 @@ npm i
 
 npm run dev
 ```
+
+## 构建&预览
+```bash
+# 构建生产环境
+npm run build
+
+# 预览构建的产品
+npm run preview
+```
+
+## Vue 3 + Vite
+
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+
+## Recommended IDE Setup
+
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
 
 ## 技术要点
 
@@ -30,10 +48,7 @@ npm run dev
 # 对可复用的组件进行了封装，对api接口进行了封装
 ```
 
-## Vue 3 + Vite
+## About
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- [我的个人博客](https://blog.csdn.net/csdn_yudong)
+- [我的推荐阅读文章](https://neveryu.blog.csdn.net/article/details/124124137)

@@ -5,13 +5,20 @@
     <div class="header-top container-fuild hidden-xs">
       <div class="container">
         <div class="server pull-left">
-          <span class="glyphicon glyphicon-earphone"></span>123-456-789
-          <span class="glyphicon glyphicon-envelope"></span>liyunkun_11@163.com
+          <span class="glyphicon glyphicon-earphone"></span>{{ phone }}
+          <span class="glyphicon glyphicon-envelope"></span>{{ email }}
           <span class="glyphicon glyphicon-time"></span>7x24小时为您服务
         </div>
         <div class="shejiao pull-right">
           <span class="glyphicon glyphicon-hand-right"></span>赶快联系我们吧！
           <span class="glyphicon glyphicon-hand-left"></span>
+
+          <a
+            href="https://github.com/neveryu"
+            target="_blank"
+            style="color: #fc5531; font-size: 18px; cursor: pointer"
+            >Github</a
+          >
         </div>
       </div>
     </div>
@@ -19,15 +26,22 @@
     <div class="header-nav container hidden-xs">
       <!-- 导航logo -->
       <div class="header-nav-logo">
-        <img src="@/assets/img/logo_black.png">
+        <img src="@/assets/img/logo_black.png" />
       </div>
       <!-- 导航内容 -->
       <ul class="header-nav-wrapper">
-        <li v-for="(item, index) in navList" :key="index" :class="index == navIndex ? 'active' : ''"
-          @click="navClick(index, item.name)">
+        <li
+          v-for="(item, index) in navList"
+          :key="index"
+          :class="index == navIndex ? 'active' : ''"
+          @click="navClick(index, item.name)"
+        >
           <router-link :to="item.path">
             {{ item.name }}
-            <span v-if="item.children.length > 0" class="glyphicon glyphicon-menu-down"></span>
+            <span
+              v-if="item.children.length > 0"
+              class="glyphicon glyphicon-menu-down"
+            ></span>
             <i class="underline"></i>
           </router-link>
           <dl v-if="item.children.length > 0">
@@ -41,20 +55,35 @@
     <!-- 手机导航 -->
     <div class="header-nav-m container-fuild visible-xs">
       <div class="header-nav-m-logo">
-        <img class="center-block" src="@/assets/img/logo_black.png" alt="logo">
+        <img
+          class="center-block"
+          src="@/assets/img/logo_black.png"
+          alt="logo"
+        />
       </div>
       <!-- 导航栏 -->
       <div class="header-nav-m-menu text-center">
         {{ menuName }}
-        <div class="header-nav-m-menu-wrapper" data-toggle="collapse" data-target="#menu" @click="menuClick">
+        <div
+          class="header-nav-m-menu-wrapper"
+          data-toggle="collapse"
+          data-target="#menu"
+          @click="menuClick"
+        >
           <span :class="menuClass"></span>
         </div>
         <!-- 导航内容 -->
         <ul id="menu" class="header-nav-m-wrapper collapse">
-          <li v-for="(item, index) in navList" :key="index" :class="index == navIndex ? 'active' : ''"
-            @click="navClick(index, item.name)" data-toggle="collapse" data-target="#menu">
+          <li
+            v-for="(item, index) in navList"
+            :key="index"
+            :class="index == navIndex ? 'active' : ''"
+            @click="navClick(index, item.name)"
+            data-toggle="collapse"
+            data-target="#menu"
+          >
             <router-link :to="item.path">
-              {{ item.name}}
+              {{ item.name }}
               <i class="underline"></i>
             </router-link>
           </li>
@@ -66,53 +95,57 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+const phone = import.meta.env.VITE_APP_PHONE
+const email = import.meta.env.VITE_APP_EMAIL
 const navIndex = ref('')
-navIndex.value =  sessionStorage.getItem('navIndex') ? sessionStorage.getItem('navIndex') : 0
+navIndex.value = sessionStorage.getItem('navIndex')
+  ? sessionStorage.getItem('navIndex')
+  : 0
 const menuName = ref('首页')
 const menuClass = ref('glyphicon glyphicon-menu-down')
 const navList = [
   {
-    name: "首页",
-    path: "/",
+    name: '首页',
+    path: '/',
     children: []
   },
   {
-    name: "软件产品",
-    path: "/software",
+    name: '软件产品',
+    path: '/software',
     children: [
       {
-        name: "智能小镇管理系统",
-        path: "/software/smartTown"
+        name: '智能小镇管理系统',
+        path: '/software/smartTown'
       },
       {
-        name: "大数据管理系统",
-        path: "/software/bigData"
+        name: '大数据管理系统',
+        path: '/software/bigData'
       }
     ]
   },
   {
-    name: "相关服务",
-    path: "/service",
+    name: '相关服务',
+    path: '/service',
     children: []
   },
   {
-    name: "新闻动态",
-    path: "/newsinformation",
+    name: '新闻动态',
+    path: '/newsinformation',
     children: []
   },
   {
-    name: "公司介绍",
-    path: "/companyintroduction",
+    name: '公司介绍',
+    path: '/companyintroduction',
     children: []
   },
   {
-    name: "工作机会",
-    path: "/jobchance",
+    name: '工作机会',
+    path: '/jobchance',
     children: []
   },
   {
-    name: "联系我们",
-    path: "/contactus",
+    name: '联系我们',
+    path: '/contactus',
     children: []
   }
 ]
@@ -122,10 +155,10 @@ function navClick(index, name) {
   menuName.value = name
 }
 function menuClick() {
-  if (menuClass.value == "glyphicon glyphicon-menu-down") {
-    menuClass.value = "glyphicon glyphicon-menu-up";
+  if (menuClass.value == 'glyphicon glyphicon-menu-down') {
+    menuClass.value = 'glyphicon glyphicon-menu-up'
   } else {
-    menuClass.value = "glyphicon glyphicon-menu-down";
+    menuClass.value = 'glyphicon glyphicon-menu-down'
   }
 }
 </script>
@@ -188,14 +221,14 @@ function menuClick() {
 }
 
 /* 导航栏 每个导航 */
-#header .header-nav .header-nav-wrapper>li {
+#header .header-nav .header-nav-wrapper > li {
   float: left;
   margin: 0 15px;
   position: relative;
 }
 
 /* 导航栏 每个导航下面的 a 链接 */
-#header .header-nav .header-nav-wrapper>li>a {
+#header .header-nav .header-nav-wrapper > li > a {
   color: #000;
   font-size: 15px;
   font-weight: bold;
@@ -204,7 +237,7 @@ function menuClick() {
 }
 
 /* 导航栏 每个导航下面的 a 链接的下划线 */
-#header .header-nav .header-nav-wrapper>li>a>i {
+#header .header-nav .header-nav-wrapper > li > a > i {
   display: block;
   position: absolute;
   bottom: -2px;
@@ -217,38 +250,38 @@ function menuClick() {
 }
 
 /* 导航栏 每个导航下面的 a 链接的右侧小三角 */
-#header .header-nav .header-nav-wrapper>li>a>span {
+#header .header-nav .header-nav-wrapper > li > a > span {
   font-size: 12px;
   transition: transform ease 0.5s;
 }
 
 /* 导航栏 每个导航下面的 a 链接 鼠标滑上去的样式 */
-#header .header-nav .header-nav-wrapper>li>a:hover {
+#header .header-nav .header-nav-wrapper > li > a:hover {
   color: #1e73be;
   text-decoration: none;
 }
 
 /* 导航栏 每个导航下面的 a 链接 鼠标滑上去下划线的样式 */
-#header .header-nav .header-nav-wrapper>li>a:hover .underline {
+#header .header-nav .header-nav-wrapper > li > a:hover .underline {
   opacity: 1;
   width: 100%;
   left: 0;
 }
 
 /* 导航栏 每个导航下面的 a 链接 鼠标滑上去三角标的样式 */
-#header .header-nav .header-nav-wrapper>li>a:hover span {
+#header .header-nav .header-nav-wrapper > li > a:hover span {
   transform: rotate(180deg);
 }
 
 /* 导航栏 每个导航下面的 a 链接 鼠标点击后的样式 */
-#header .header-nav .header-nav-wrapper>li.active>a {
+#header .header-nav .header-nav-wrapper > li.active > a {
   color: #1e73be;
   text-decoration: none;
   border-bottom: 2px solid #1e73be;
 }
 
 /* 导航栏 每个导航下面的二级导航容器 */
-#header .header-nav .header-nav-wrapper>li>dl {
+#header .header-nav .header-nav-wrapper > li > dl {
   display: none;
   position: absolute;
   width: 168px;
@@ -260,23 +293,23 @@ function menuClick() {
 }
 
 /* 导航栏 每个导航下面的二级导航容器的每个导航 */
-#header .header-nav .header-nav-wrapper>li>dl>dt {
+#header .header-nav .header-nav-wrapper > li > dl > dt {
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
 
 /* 导航栏 每个导航下面的二级导航容器的每个导航 当鼠标滑上时的样式*/
-#header .header-nav .header-nav-wrapper>li>dl>dt>a:hover {
+#header .header-nav .header-nav-wrapper > li > dl > dt > a:hover {
   text-decoration: none;
 }
 
 /* 导航栏 滑上一级导航显示二级导航 */
-#header .header-nav .header-nav-wrapper>li:hover dl {
+#header .header-nav .header-nav-wrapper > li:hover dl {
   display: block;
 }
 
-#header .header-nav .header-nav-wrapper>li>dl>dt:hover {
+#header .header-nav .header-nav-wrapper > li > dl > dt:hover {
   cursor: pointer;
   background: #ccc;
 }
@@ -338,14 +371,14 @@ function menuClick() {
   }
 
   /* 导航栏 每个导航 */
-  #header .header-nav-m .header-nav-m-wrapper>li {
+  #header .header-nav-m .header-nav-m-wrapper > li {
     height: 40px;
     line-height: 40px;
     border-bottom: 1px solid #ccc;
   }
 
   /* 导航栏 每个导航下面的 a 链接 */
-  #header .header-nav-m .header-nav-m-wrapper>li>a {
+  #header .header-nav-m .header-nav-m-wrapper > li > a {
     color: #fff;
     font-size: 15px;
     font-weight: bold;
@@ -354,8 +387,9 @@ function menuClick() {
   }
 
   /* 导航栏 每个导航下面的 a 链接的右侧小三角 */
-  #header .header-nav .header-nav-wrapper>li>a>span {
+  #header .header-nav .header-nav-wrapper > li > a > span {
     font-size: 10px;
   }
 }
 </style>
+

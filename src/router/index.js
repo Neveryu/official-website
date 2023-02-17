@@ -58,12 +58,13 @@ const routes = [
         path: '/service',
         name: 'service',
         component: () => import('@/view/Service.vue'),
+        props: true,
         meta: {
           title: '相关服务'
         }
       },
       {
-        path: '/serviceDetail',
+        path: '/servicedetail',
         name: 'serviceDetail',
         component: () => import('@/view/ServiceDetail.vue'),
         props: true,
@@ -89,7 +90,7 @@ const routes = [
       },
       {
         path: '/jobchance',
-        name: 'jobchance',
+        name: 'jobChance',
         component: () => import('@/view/JobChance.vue'),
         meta: {
           title: '工作机会'
@@ -97,7 +98,7 @@ const routes = [
       },
       {
         path: '/contactus',
-        name: 'contactus',
+        name: 'contactUs',
         component: () => import('@/view/ContactUs.vue'),
         meta: {
           title: '联系我们'

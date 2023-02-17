@@ -68,7 +68,7 @@ const router = useRouter()
 function ServiceClick(id) {
   router.push({
     name: 'serviceDetail',
-    params: {
+    state: {
       id
     }
   })

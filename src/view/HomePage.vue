@@ -50,7 +50,9 @@
             我们的流线式网页布局设计方案和可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。无论您是普通互联网用户，还是专业网站制作人员。
           </p>
           <h2 class="bigData-device">PC/PAD/Phone &nbsp; 全设备支持</h2>
-          <a href="#" class="btn btn-lg btn-block btn-info">联系我们</a>
+          <a href="javascript:;" class="btn btn-lg btn-block btn-info"
+            >联系我们</a
+          >
         </div>
       </div>
     </div>
@@ -194,27 +196,23 @@ import img_skill from '@/assets/img/skill.png'
 const swiperList = [
   {
     img: banner1,
-    path: '',
     title: '您身边的IT专家1',
-    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+    content: '宣传简介您身边的IT专家1宣传简介您身边的IT专家1'
   },
   {
     img: banner2,
-    path: '',
     title: '您身边的IT专家2',
-    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+    content: '宣传简介您身边的IT专家2宣传简介您身边的IT专家2'
   },
   {
     img: banner1,
-    path: '',
     title: '您身边的IT专家3',
-    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+    content: '宣传简介您身边的IT专家3宣传简介您身边的IT专家3'
   },
   {
     img: banner2,
-    path: '',
     title: '您身边的IT专家4',
-    content: '宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介宣传简介'
+    content: '宣传简介您身边的IT专家4宣传简介您身边的IT专家4'
   }
 ]
 

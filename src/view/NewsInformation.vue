@@ -6,8 +6,8 @@
         <p style="color: #b2b2b2">Company News</p>
       </div>
       <div class="nav container text-center">
-        <a href="#" class="active">公司新闻</a>
-        <a href="#">行业动态</a>
+        <a href="javascript:;" class="active">公司新闻</a>
+        <a href="javascript:;">行业动态</a>
       </div>
       <ul class="news-container container-fuild">
         <li v-for="(item, index) in newsList" :key="index" class="wow fadeIn">

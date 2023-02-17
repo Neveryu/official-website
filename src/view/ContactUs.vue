@@ -52,7 +52,10 @@
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default btn-block">
+                  <button
+                    class="btn btn-default btn-block"
+                    @click.stop="submitForm"
+                  >
                     提交
                   </button>
                 </div>
@@ -70,10 +73,12 @@
 <script setup name="ContactUs">
 import WOW from 'wow.js'
 import { onMounted } from 'vue'
-import BMap from 'BMap'
+// 百度地图BMap构造函数
+let BMap = null
 onMounted(() => {
+  BMap = window.BMap
   var map = new BMap.Map('map') // 创建地图实例
-  var point = new BMap.Point(116.301841, 40.156506) // 创建点坐标
+  var point = new BMap.Point(114.54591657517, 30.496032878104) // 创建点坐标
   map.centerAndZoom(point, 18) // 初始化地图，设置中心点坐标和地图级别
   map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
   var marker = new BMap.Marker(point) // 创建标注
@@ -81,13 +86,24 @@ onMounted(() => {
   var opts = {
     width: 50, // 信息窗口宽度
     height: 10, // 信息窗口高度
-    title: '黄元公寓' // 信息窗口标题
+    title: '武汉XXX公司' // 信息窗口标题
   }
-  var infoWindow = new BMap.InfoWindow('我的家', opts) // 创建信息窗口对象
+  var infoWindow = new BMap.InfoWindow(
+    `<span>地址：武汉市东湖高新技术开发区，马蹄莲<span>
+     <br>
+     <span>联系方式：423</span>`,
+    opts
+  ) // 创建信息窗口对象
   map.openInfoWindow(infoWindow, map.getCenter()) // 打开信息窗口
   var wow = new WOW()
   wow.init()
 })
+function submitForm() {
+  window.open(
+    'https://neveryu.github.io/web-bookmarks/interview/',
+    'web-bookmarks'
+  )
+}
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@
     <div class="banner container-fuild text-center">工作机会</div>
     <div class="container">
       <div class="JobChance-container wow pulse">
-        <h2>PHP工程师</h2>
+        <h2>软件工程师</h2>
         <p>岗位职责</p>
         <ol>
           <li>负责公司产品及项目系统的功能开发、代码优化；</li>
@@ -34,7 +34,12 @@
             对网站系统架构的部署、搭建、优化、排错等方面有丰富经验，对高负载、大访问量情况下的系统架构有经验者优先。
           </li>
         </ol>
-        <button class="center-block btn btn-warning btn-lg">投递简历</button>
+        <button
+          class="center-block btn btn-warning btn-lg"
+          @click.stop="submitForm"
+        >
+          投递简历
+        </button>
       </div>
     </div>
   </div>
@@ -47,6 +52,9 @@ onMounted(() => {
   let wow = new WOW()
   wow.init()
 })
+function submitForm() {
+  window.open('https://neveryu.github.io/neveryu/', 'NeverYu')
+}
 </script>
 
 <style scoped>
